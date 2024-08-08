@@ -8,18 +8,22 @@
 # then the next permutation of that array is the permutation that follows it in the sorted container. 
 # If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
 
-def nextPermutation(self, nums: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        i = j = len(nums)-1
+def nextPermutation(nums):
+    i = j = (len(nums))-1
 
-        while i>0 and nums[i-1]>=nums[i]:
-            i-=1
-        if i==0:
-            nums = nums.reverse()
-            return
-        while j>0 and nums[i-1]>=nums[j]:
-            j-=1
-        nums[i-1],nums[j]=nums[j],nums[i-1]
-        nums[i::]=nums[len(nums)-1:i-1:-1]
+    while i>0 and nums[i-1]>=nums[i]:
+        i-=1
+    if i==0:
+       nums = nums.reverse()
+       return
+    while j>0 and nums[i-1]>=nums[j]:
+        j-=1
+    nums[i-1],nums[j]=nums[j],nums[i-1]
+    nums[i::]=nums[len(nums)-1:i-1:-1]
+    return
+
+test = int(input())
+while test>0:
+    test-=1
+    nums = list(map(int,input().split()))
+print(nextPermutation(nums))
