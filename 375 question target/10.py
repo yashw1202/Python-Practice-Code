@@ -5,6 +5,7 @@
 # Can you solve it without sorting?
 
 nums=list(map(int,input().split()))
+k = int(input())
 nums.sort()
 
 print(nums[-k])
